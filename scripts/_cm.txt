@@ -1,0 +1,23 @@
+Strands Decider hackathon kit setup  (AWS User Group Madurai)
+
+1. This machine
+  [32mOK[0m   Windows AMD64 (Intel64 Family 6 Model 142 Stepping 12, GenuineIntel), 8 CPUs, 15.8 GB RAM, 100.2 GB free
+  [32mOK[0m   Python 3.12.13
+  [32mOK[0m   NVIDIA GPU: NVIDIA GeForce MX250, 2048 MiB
+  [32mOK[0m   git: found (version control)
+  [33mWARN[0m gh: missing (publishing your repo (./kit publish))
+  [33mWARN[0m node: missing (the AgentCore CLI (./kit deploy))
+  [33mWARN[0m AgentCore CLI not found: ./kit agentcore-cli  (needed for ./kit deploy; no sudo)
+  [32mOK[0m   Kiro found
+
+2. Where should the agent's LLM run? (called through a Strands Agent in every case)
+   bedrock : Amazon Bedrock, e.g. Amazon Nova (the hackathon submission needs it; a few cents)
+   local   : a model on this machine through Ollama; no cloud, no cost (1.2 to 6.6 GB download)
+   ugmdu   : Qwen3.5 or gpt-oss on the AWS User Group Madurai cloud (your decider key)
+
+3. Where should Strands Decider 2B run?
+   local  : download the 2B model (StrandsAgents/strands-decider-2B-qwen3.5-v1-2610, about 5 GB) and serve it here  [recommended: your NVIDIA GPU]
+   ugmdu  : the AWS User Group Madurai hosted API, nothing to download (needs a key)
+   custom : your own compatible endpoint
+
+   Recommended: LLM local, decider local. Nothing was changed.

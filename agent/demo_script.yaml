@@ -1,0 +1,19 @@
+title: "StoryStone — The Curious Heritage Detective"
+pitch: "Every sculpture has a story. StoryStone investigates the clues and discovers it."
+features:
+  - "dynamic temple introduction with sourced history and legends"
+  - "iconographic sculpture analysis — posture, mudras, attributes, companions"
+  - "Strands Decider 2B classifies the investigation verdict before any story is presented"
+  - "evidence-backed story with sources, confidence notes, and explore-further prompts"
+  - "deployed on Amazon Bedrock AgentCore Runtime"
+eager: false
+intro: "StoryStone is a heritage detective for tourists. It researches the temple, analyses the sculpture, assembles the evidence, and only then asks Strands Decider 2B whether there is enough to tell the story — or whether to dig deeper, ask for a closer photo, or admit uncertainty."
+intro_normal: "StoryStone runs on Amazon Bedrock AgentCore Runtime and uses Strands Decider 2B to classify the investigation verdict after every evidence-gathering cycle."
+turns:
+  - say: "I'm visiting Meenakshi Amman Temple in Madurai. Tell me about this temple."
+    narrate: "The tourist selects the temple. StoryStone researches it and presents a sourced introduction."
+  - say: "I found a beautiful figure with four arms, a ring of fire around it, and it's standing on a small dwarf. It looks like it's dancing. Who is this?"
+    narrate: "The tourist describes what they see. StoryStone analyses, searches for heritage references, assembles evidence, and the decider classifies the verdict."
+  - say: "What does the drum in the upper right hand represent? And why is there a dwarf under the feet?"
+    narrate: "A follow-up question. StoryStone answers from the assembled evidence without re-running the full investigation."
+outro: "One decider call per investigation cycle. Calibrated probabilities let the code branch on whether the evidence is strong enough — faster and cheaper than asking the LLM to judge its own confidence."

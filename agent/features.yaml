@@ -1,0 +1,18 @@
+# Amazon Bedrock AgentCore features for StoryStone.
+# Runtime only — Memory and Gateway are disabled for the initial submission.
+# The agent deploys on AgentCore Runtime with Amazon Bedrock as the LLM.
+
+memory:
+  enabled: false
+  name: storystonememory
+  strategies: [SEMANTIC, USER_PREFERENCE]
+  expiry_days: 30
+
+gateway:
+  enabled: false
+  name: tools
+  authorizer: AWS_IAM
+  targets:
+    - name: websearch
+      type: connector
+      connector: web-search

@@ -1,0 +1,7 @@
+Image b64 length: 92 chars
+First 40 chars: iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQ
+
+Payload size: 305 bytes
+Sending to http://127.0.0.1:11434/api/chat ...
+
+HTTP 400: {"error":"Failed to load image or audio file"}

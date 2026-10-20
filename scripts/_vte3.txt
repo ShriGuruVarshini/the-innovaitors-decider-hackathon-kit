@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "c:\Users\HP\Downloads\the-innovaitors-decider-hackathon-kit\the-innovaitors-decider-hackathon-kit\scripts\_vision_test.py", line 52, in <module>
+    print(f"\n\u2705 Vision API works! Response: {reply[:200]}")
+  File "C:\Users\HP\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 2: character maps to <undefined>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\HP\Downloads\the-innovaitors-decider-hackathon-kit\the-innovaitors-decider-hackathon-kit\scripts\_vision_test.py", line 56, in <module>
+    print(f"\n\u274c {type(e).__name__}: {e}")
+  File "C:\Users\HP\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u274c' in position 2: character maps to <undefined>

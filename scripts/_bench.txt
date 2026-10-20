@@ -1,0 +1,7 @@
+[bench] WARNING: only 11 cases in this run; 12+ per split (24+ in total) makes the numbers credible
+[bench] 1/11
+[bench] 2/11
+[bench] 3/11
+[bench] 4/11
+[bench] 5/11
+[bench] 6/11

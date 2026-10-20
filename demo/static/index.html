@@ -1,0 +1,336 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StoryStone — Heritage Detective</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0C0E14; --panel:#13161F; --panel2:#181C28;
+    --line:#252A3A; --ink:#E8EAF0; --mute:#8A93AB;
+    --gold:#D4A853; --gold2:#F0C870; --amber:#FBBF24;
+    --green:#34D399; --red:#F87171; --blue:#60A5FA; --teal:#2DD4BF;
+    --stone:#C8B99A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--ink);font:15px Inter,system-ui,sans-serif;height:100vh;display:flex;flex-direction:column;}
+
+  /* ── Header ── */
+  header{display:flex;align-items:center;gap:14px;padding:12px 24px;border-bottom:1px solid var(--line);flex-shrink:0;background:var(--panel);}
+  .logo{display:flex;align-items:center;gap:10px;}
+  .logo-icon{font-size:22px;line-height:1;}
+  .logo-text{font-family:'Playfair Display',serif;font-size:20px;color:var(--gold2);letter-spacing:.01em;}
+  .logo-sub{font-size:12px;color:var(--mute);margin-top:1px;}
+  .meta{margin-left:auto;color:var(--mute);font-size:12px;text-align:right;line-height:1.6;}
+  .meta b{color:var(--stone);}
+
+  /* ── Main layout ── */
+  main{display:grid;grid-template-columns:1.15fr 1fr;gap:16px;padding:16px 24px;flex:1;min-height:0;}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;min-height:0;overflow:hidden;}
+  .card-title{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--mute);margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+  .card-title::before{content:'';display:block;width:6px;height:6px;border-radius:50%;background:var(--gold);}
+
+  /* ── Temple selector ── */
+  #temple-bar{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;}
+  #temple-bar input{flex:1;min-width:120px;background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:9px 12px;font:inherit;outline:none;transition:border .2s;}
+  #temple-bar input:focus{border-color:var(--gold);}
+  #temple-bar input::placeholder{color:var(--mute);}
+  #temple-btn{background:var(--gold);color:#111;border:0;border-radius:10px;padding:0 16px;font:600 14px Inter,sans-serif;cursor:pointer;white-space:nowrap;transition:background .2s;}
+  #temple-btn:hover{background:var(--gold2);}
+  #temple-status{width:100%;font-size:12px;color:var(--stone);padding:2px 2px;}
+
+  /* ── Log ── */
+  #log{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding-right:4px;}
+  #log::-webkit-scrollbar{width:4px;}#log::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px;}
+  .msg{padding:11px 14px;border-radius:14px;max-width:90%;line-height:1.55;white-space:pre-wrap;word-break:break-word;font-size:14px;}
+  .user{align-self:flex-end;background:#1E2540;border:1px solid #2A3255;}
+  .bot{align-self:flex-start;background:var(--panel2);border:1px solid var(--line);}
+  .bot .t{color:var(--mute);font-size:11px;margin-top:7px;}
+  .bot img{height:110px;display:block;margin-bottom:8px;border-radius:8px;border:1px solid var(--line);}
+
+  /* ── Investigation status badge ── */
+  .stage{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--gold);background:#1A1800;border:1px solid #3A3000;border-radius:99px;padding:3px 10px;margin-bottom:6px;}
+  .stage::before{content:'🔍';font-size:10px;}
+
+  /* ── Input row ── */
+  .input-row{display:flex;gap:8px;margin-top:12px;align-items:center;}
+  .clip-label{display:flex;align-items:center;justify-content:center;width:42px;height:42px;background:var(--panel2);border:1px solid var(--line);border-radius:10px;cursor:pointer;font-size:18px;transition:border .2s;flex-shrink:0;}
+  .clip-label:hover{border-color:var(--gold);}
+  #m{flex:1;background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:11px 14px;font:inherit;outline:none;transition:border .2s;}
+  #m:focus{border-color:var(--gold);}
+  #m::placeholder{color:var(--mute);}
+  #send-btn{background:var(--gold);color:#111;border:0;border-radius:10px;padding:0 18px;height:42px;font:600 14px Inter,sans-serif;cursor:pointer;transition:background .2s;}
+  #send-btn:hover{background:var(--gold2);}
+  #att{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;}
+  #att img{height:58px;border-radius:8px;border:1px solid var(--line);}
+
+  /* ── Hint chips ── */
+  .hints{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
+  .hint{font-size:12px;color:var(--stone);background:var(--panel2);border:1px solid var(--line);border-radius:99px;padding:4px 10px;cursor:pointer;transition:border .2s;}
+  .hint:hover{border-color:var(--gold);color:var(--gold2);}
+
+  /* ── Decision panel ── */
+  #dec{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding-right:4px;}
+  #dec::-webkit-scrollbar{width:4px;}#dec::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px;}
+  .d{border:1px solid var(--line);border-radius:12px;padding:13px;background:#0E1120;animation:pop .3s ease;}
+  @keyframes pop{from{transform:scale(.97);opacity:.2}to{transform:none;opacity:1}}
+  .d-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;}
+  .d-title{font-size:13px;font-weight:600;color:var(--stone);}
+  .d-tag{font:11px 'JetBrains Mono',monospace;padding:3px 9px;border-radius:99px;border:1px solid var(--line);white-space:nowrap;}
+  .d-tag.answer{color:var(--green);border-color:var(--green);}
+  .d-tag.investigate_further{color:var(--amber);border-color:var(--amber);}
+  .d-tag.request_closeup{color:var(--blue);border-color:var(--blue);}
+  .d-tag.acknowledge_uncertainty{color:var(--red);border-color:var(--red);}
+  .d-tag.proceed{color:var(--green);border-color:var(--green);}
+  .d-tag.guide,.d-tag.review{color:var(--amber);border-color:var(--amber);}
+  .d-tag.deny,.d-tag.block{color:var(--red);border-color:var(--red);}
+  .d-tag.confirm{color:var(--blue);border-color:var(--blue);}
+  .row{display:grid;grid-template-columns:160px 1fr 46px;gap:8px;align-items:center;font:12px 'JetBrains Mono',monospace;margin:4px 0;}
+  .bar{height:8px;background:#1B2540;border-radius:99px;overflow:hidden;}
+  .bar i{display:block;height:100%;border-radius:99px;transition:width .4s;}
+  .kv{color:var(--mute);font:11px 'JetBrains Mono',monospace;margin-top:7px;word-break:break-all;line-height:1.6;}
+  .probs-detail{margin-top:6px;border-top:1px solid var(--line);padding-top:6px;}
+  .probs-detail .p-row{display:flex;justify-content:space-between;font:11px 'JetBrains Mono',monospace;color:var(--mute);margin:2px 0;}
+  .probs-detail .p-row span:last-child{color:var(--stone);}
+  .empty{color:var(--mute);font-size:13px;text-align:center;margin-top:32px;}
+  .credit{color:var(--mute);font-size:11px;margin-top:8px;text-align:center;}
+
+  /* ── Welcome message ── */
+  .welcome{align-self:stretch;background:linear-gradient(135deg,#1A1408,#141020);border:1px solid #3A2A08;border-radius:14px;padding:18px;text-align:center;}
+  .welcome h2{font-family:'Playfair Display',serif;color:var(--gold2);font-size:18px;margin-bottom:6px;}
+  .welcome p{color:var(--stone);font-size:13px;line-height:1.6;}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">
+    <span class="logo-icon">🪨</span>
+    <div><div class="logo-text">StoryStone</div><div class="logo-sub">The Curious Heritage Detective</div></div>
+  </div>
+  <div class="meta" id="meta"></div>
+</header>
+
+<main>
+  <!-- Left: Conversation -->
+  <section class="card">
+    <div class="card-title">Investigation</div>
+
+    <!-- Temple bar -->
+    <div id="temple-bar">
+      <input id="temple-name" placeholder="Temple name (e.g. Meenakshi Amman Temple)" autocomplete="off">
+      <input id="temple-city" placeholder="City (e.g. Madurai)" style="max-width:180px;" autocomplete="off">
+      <button id="temple-btn" onclick="discoverTemple()">Discover This Temple</button>
+      <div id="temple-status"></div>
+    </div>
+
+    <div id="log">
+      <div class="welcome">
+        <h2>Every sculpture has a story.</h2>
+        <p>Enter a temple name and city above to begin your heritage investigation.<br>
+        Then upload a sculpture photo and watch StoryStone investigate its possible meaning.</p>
+      </div>
+    </div>
+
+    <div id="att"></div>
+
+    <div class="hints" id="hints">
+      <span class="hint" onclick="setHint('Who is this figure and what story does it tell?')">🗿 Who is this figure?</span>
+      <span class="hint" onclick="setHint('What do the hand gestures (mudras) of this sculpture mean?')">🤲 What do the mudras mean?</span>
+      <span class="hint" onclick="setHint('What is the cultural and religious significance of this sculpture?')">🏛️ Cultural significance?</span>
+      <span class="hint" onclick="setHint('I can see a ring of fire and a dancing figure — who could this be?')">💃 Dancing figure?</span>
+    </div>
+
+    <div class="input-row">
+      <label class="clip-label" title="Attach sculpture photo">
+        📎<input id="img" type="file" accept="image/*" multiple hidden>
+      </label>
+      <input id="m" placeholder="Ask about a sculpture, or describe what you see…" autocomplete="off">
+      <button id="send-btn" onclick="sendMsg()">Investigate</button>
+    </div>
+  </section>
+
+  <!-- Right: Decision panel -->
+  <section class="card">
+    <div class="card-title">Strands Decider 2B — Investigation Verdicts</div>
+    <div id="dec">
+      <p class="empty">🔍 Decider verdicts appear here as StoryStone investigates.<br><br>
+      Each card shows what evidence quality was found and which investigation path was chosen.</p>
+    </div>
+    <div class="credit">Built with the AWS User Group Madurai Strands Decider hackathon kit</div>
+  </section>
+</main>
+
+<script>
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const log = document.getElementById("log"), dec = document.getElementById("dec");
+let sessionId = "s_" + Math.random().toString(36).slice(2);
+let templeContext = "";
+let pending = [];
+
+// ── Info bar ──
+fetch("/api/info").then(r => r.json()).then(i => {
+  document.getElementById("meta").innerHTML =
+    `<b>${esc(i.agent)}</b><br>LLM: ${esc(i.llm)} · Decider: ${esc(i.decider)}`;
+}).catch(() => {});
+
+// ── Add message to log ──
+function addMsg(cls, html) {
+  const d = document.createElement("div");
+  d.className = "msg " + cls;
+  d.innerHTML = html;
+  // Remove welcome card on first real message
+  const w = log.querySelector(".welcome");
+  if (w) w.remove();
+  log.appendChild(d);
+  log.scrollTop = 1e9;
+  return d;
+}
+
+// ── Stage badge ──
+function stageBadge(text) {
+  return `<span class="stage">${esc(text)}</span>\n`;
+}
+
+// ── Decision card ──
+function showDecision(rec) {
+  if (dec.querySelector(".empty")) dec.innerHTML = "";
+  const verdict = rec.verdict || rec.action || rec.tier || "";
+  const title = rec.tool ? `before ${rec.tool}` : (rec.stage || rec.pattern || "investigation verdict");
+  const verdictLabel = {
+    "answer": "✅ answer",
+    "investigate_further": "🔎 investigate further",
+    "request_closeup": "🔍 request close-up",
+    "acknowledge_uncertainty": "⚠️ acknowledge uncertainty",
+    "proceed": "✅ proceed",
+    "guide": "↩ guide",
+    "deny": "⛔ deny",
+    "confirm": "❓ confirm",
+    "review": "👁 review",
+    "block": "⛔ block",
+  }[verdict] || verdict;
+
+  // Probability bars: numeric 0-1 values that aren't _ms
+  const probs = Object.entries(rec).filter(([k,v]) =>
+    typeof v === "number" && v >= 0 && v <= 1 && !k.endsWith("_ms"));
+  // Other metadata
+  const skip = new Set(["verdict","action","tool","stage","pattern","probabilities","low_confidence"]);
+  const meta = Object.entries(rec).filter(([k,v]) => !skip.has(k) && !(typeof v === "number" && v >= 0 && v <= 1 && !k.endsWith("_ms")));
+
+  const color = v => v >= 0.55 ? "#34D399" : v >= 0.35 ? "#FBBF24" : "#F87171";
+  const el = document.createElement("div"); el.className = "d";
+
+  let html = `<div class="d-head">
+    <span class="d-title">${esc(title)}</span>
+    <span class="d-tag ${esc(verdict)}">${esc(verdictLabel)}</span>
+  </div>`;
+
+  // Probability bars for scalar values
+  html += probs.map(([k,v]) =>
+    `<div class="row"><span>${esc(k)}</span><span class="bar"><i style="width:${v*100}%;background:${color(v)}"></i></span><span>${v.toFixed(2)}</span></div>`
+  ).join("");
+
+  // Detailed choice probabilities if present
+  if (rec.probabilities && rec.probabilities.verdict) {
+    html += `<div class="probs-detail">`;
+    for (const [opt, prob] of Object.entries(rec.probabilities.verdict)) {
+      html += `<div class="p-row"><span>${esc(opt)}</span><span>${(+prob).toFixed(3)}</span></div>`;
+    }
+    html += `</div>`;
+  }
+
+  // Metadata row
+  if (meta.length) {
+    html += `<div class="kv">${meta.map(([k,v]) => `${esc(k)}: ${esc(typeof v === "object" ? JSON.stringify(v) : v)}`).join(" · ")}</div>`;
+  }
+
+  if (rec.low_confidence) {
+    html += `<div class="kv" style="color:var(--amber)">⚠️ low confidence — interpretation is tentative</div>`;
+  }
+
+  el.innerHTML = html;
+  dec.prepend(el);
+}
+
+// ── Discover temple ──
+async function discoverTemple() {
+  const name = document.getElementById("temple-name").value.trim();
+  const city = document.getElementById("temple-city").value.trim();
+  if (!name || !city) {
+    document.getElementById("temple-status").textContent = "Please enter both temple name and city.";
+    return;
+  }
+  document.getElementById("temple-status").textContent = "Researching…";
+  document.getElementById("temple-btn").disabled = true;
+  templeContext = `${name}, ${city}`;
+  const msg = `I'm visiting ${name} in ${city}. Tell me about this temple — its history, legends, and what sculptures I might find here.`;
+  addMsg("user", esc(`🏛️ ${name}, ${city}`));
+  const wait = addMsg("bot", stageBadge("Researching temple history…") + "<span style='color:var(--mute)'>Searching heritage records…</span>");
+  const r = await fetch("/api/chat", {
+    method: "POST", headers: {"content-type": "application/json"},
+    body: JSON.stringify({message: msg, session_id: sessionId, images: []})
+  });
+  const out = await r.json();
+  document.getElementById("temple-btn").disabled = false;
+  if (out.error) {
+    wait.innerHTML = `<span style="color:var(--red)">${esc(out.error)}</span>`;
+    document.getElementById("temple-status").textContent = "Error — see chat.";
+    return;
+  }
+  (out.decisions || []).forEach(showDecision);
+  const n = out.decisions?.length || 0;
+  wait.innerHTML = esc(out.reply) +
+    `<div class="t">${out.latency_ms} ms · ${n} decision${n===1?"":"s"}</div>`;
+  document.getElementById("temple-status").textContent = `✓ ${name} loaded — upload a sculpture photo to investigate`;
+  document.getElementById("m").placeholder = `Describe what you see, or ask about a sculpture at ${name}…`;
+}
+
+// ── Hint chips ──
+function setHint(text) { document.getElementById("m").value = text; document.getElementById("m").focus(); }
+
+// ── Photo attach ──
+document.getElementById("img").addEventListener("change", async e => {
+  for (const f of e.target.files) {
+    pending.push(await new Promise(ok => { const r = new FileReader(); r.onload = () => ok(r.result); r.readAsDataURL(f); }));
+  }
+  document.getElementById("att").innerHTML = pending.map(u => `<img src="${u}" alt="sculpture photo">`).join("");
+  e.target.value = "";
+});
+
+// ── Send message ──
+async function sendMsg() {
+  const mEl = document.getElementById("m");
+  const text = mEl.value.trim();
+  if (!text && !pending.length) return;
+  mEl.value = "";
+  const images = pending.slice(); pending = [];
+  document.getElementById("att").innerHTML = "";
+
+  // Build user bubble
+  const imgHtml = images.map(u => `<img src="${u}" alt="sculpture photo">`).join("");
+  addMsg("user", imgHtml + (text ? esc(text) : ""));
+
+  // Thinking indicator -- show image analysis stage if photo attached
+  const wait = addMsg("bot", stageBadge("Observing sculpture…") + "<span style='color:var(--mute)'>Investigating…</span>");
+
+  const r = await fetch("/api/chat", {
+    method: "POST", headers: {"content-type": "application/json"},
+    body: JSON.stringify({message: text || "(analyse this sculpture)", session_id: sessionId, images})
+  });
+  const out = await r.json();
+  if (out.error) {
+    wait.innerHTML = `<span style="color:var(--red)">${esc(out.error)}</span>`; return;
+  }
+  (out.decisions || []).forEach(showDecision);
+  const n = out.decisions?.length || 0;
+  wait.innerHTML = esc(out.reply) +
+    `<div class="t">${out.latency_ms} ms · ${n} decision${n===1?"":"s"}${out.served_by ? " · " + esc(out.served_by) : ""}</div>`;
+}
+
+// Enter key sends
+document.getElementById("m").addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMsg(); } });
+// Enter on temple city field triggers discover
+document.getElementById("temple-city").addEventListener("keydown", e => { if (e.key === "Enter") discoverTemple(); });
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+{
+  "temples": {
+    "meenakshi amman temple": {
+      "name": "Meenakshi Amman Temple",
+      "city": "Madurai",
+      "summary": "The Meenakshi Amman Temple in Madurai, Tamil Nadu, is one of the oldest and most significant Hindu temples in South India, dedicated to Goddess Meenakshi (a form of Parvati) and her consort Sundareswarar (Shiva). Built in the 17th century by Tirumalai Nayak, it features 14 gateway towers (gopurams) covered in thousands of colourful stucco sculptures. The temple complex spans 45 acres and contains the Hall of Thousand Pillars (Ayirakkal Mandapam). It is associated with the legend of Shiva arriving to marry Meenakshi, the fish-eyed queen of Madurai.",
+      "highlights": ["Hall of Thousand Pillars", "14 gopurams", "Golden Lotus Tank", "Meenakshi shrine", "Sundareswarar shrine"],
+      "sources": [
+        "https://maduraimeenakshi.org",
+        "https://en.wikipedia.org/wiki/Meenakshi_Amman_Temple",
+        "https://www.tnarch.gov.in/meenakshi-amman-temple"
+      ]
+    },
+    "brihadeeswarar temple": {
+      "name": "Brihadeeswarar Temple",
+      "city": "Thanjavur",
+      "summary": "The Brihadeeswarar Temple in Thanjavur, built by Raja Raja Chola I in 1010 CE, is a UNESCO World Heritage Site and the finest example of Dravidian architecture. It is dedicated to Shiva and features a 66-metre vimana (tower). The temple walls display exceptional Chola-era murals and sculptures depicting Shiva, Parvati, Vishnu, and the 81 classical dance poses (karanas) of Nataraja.",
+      "highlights": ["66-metre vimana", "Nandi mandapam", "Chola murals", "Nataraja sculptures", "Dakshinamurthy panel"],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Brihadisvara_Temple,_Thanjavur",
+        "https://whc.unesco.org/en/list/250",
+        "https://www.tnarch.gov.in/brihadeeswarar"
+      ]
+    },
+    "shore temple": {
+      "name": "Shore Temple",
+      "city": "Mahabalipuram",
+      "summary": "The Shore Temple at Mahabalipuram (Mamallapuram), Tamil Nadu, is a UNESCO World Heritage Site dating to the 8th century CE, built by the Pallava king Narasimhavarman II. It is one of the oldest structural stone temples in South India, overlooking the Bay of Bengal. The temple contains three shrines: two dedicated to Shiva and one to a reclining Vishnu. It is surrounded by smaller shrines with sculptures of Nandi and various deities.",
+      "highlights": ["Three shrines", "Reclining Vishnu", "Nandi statues", "Pallava sculptural style", "ocean setting"],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Shore_Temple",
+        "https://whc.unesco.org/en/list/249",
+        "https://www.mahabalipuram.in/shore-temple"
+      ]
+    }
+  },
+  "sculptures": {
+    "nataraja": {
+      "candidate": "Nataraja — Shiva as the Lord of Cosmic Dance",
+      "observations": "Figure with four arms performing the Ananda Tandava (dance of bliss). Upper right hand holds a small drum (damaru), upper left holds a flame (agni). Lower right hand shows Abhaya mudra (fear-not gesture), lower left points to the raised left foot (Gajahasta mudra). Figure stands on the back of a dwarf (Apasmara Purusha, representing ignorance). A ring of flames (prabhamandala) encircles the figure. Hair is spread in a fan with a crescent moon and the river Ganga visible. Five-headed cobra visible in the hair. The figure wears ornate jewellery and a dhoti.",
+      "iconography": "Nataraja iconography is codified in the Chidambaram tradition. The drum represents creation (sound as the origin of the universe), the flame represents destruction, the raised foot represents liberation (moksha), and the suppressed dwarf represents the ego and ignorance that must be overcome. The dance represents the five cosmic acts: creation, preservation, destruction, concealment, and grace.",
+      "sources": [
+        {"url": "https://www.ciis.edu/research-and-resources/publications/nataraja", "text": "The Nataraja form is the quintessential representation of Shiva's cosmic dance, the Ananda Tandava, first canonised in bronze at Chidambaram."},
+        {"url": "https://en.wikipedia.org/wiki/Nataraja", "text": "Nataraja (Sanskrit: Lord of Dance) is a depiction of the Hindu god Shiva as the divine cosmic dancer. The most common iconic version shows four-armed Shiva dancing within an archway of flames."},
+        {"url": "https://www.metmuseum.org/art/collection/search/39328", "text": "The Chola-period Nataraja bronzes, 10th-12th century, exemplify the mature iconographic tradition in which the drum, fire, abhaya mudra, raised foot, and Apasmara are all present."}
+      ]
+    },
+    "ganesha": {
+      "candidate": "Ganesha — the elephant-headed son of Shiva and Parvati",
+      "observations": "Seated figure with a human body and an elephant head with one tusk (the left tusk is broken). Four arms: upper right holds a noose (pasha), upper left holds a goad (ankusha), lower right holds a broken tusk or modaka (sweet), lower left holds a bowl of modaka sweets. Large round belly. A small mouse (mushika) is visible near the feet as the vahana (vehicle). The figure sits in lalitasana (royal ease pose) on a lotus pedestal. A cobra is wrapped around the waist as a belt.",
+      "iconography": "Ganesha is the remover of obstacles and patron of beginnings, arts, and wisdom. The single tusk represents concentration (one-pointed focus); the noose binds obstacles, the goad drives away difficulties. The modaka represents the sweetness of inner realisation. The mouse symbolises the ability to overcome any obstacle, however small.",
+      "sources": [
+        {"url": "https://en.wikipedia.org/wiki/Ganesha", "text": "Ganesha is widely revered as the remover of obstacles, the patron of arts and sciences, and the deva of intellect and wisdom. He is the son of Shiva and Parvati."},
+        {"url": "https://www.himalayanacademy.com/view/what-ganesha-holds", "text": "The four arms of Ganesha typically hold the pasha (noose), the ankusha (goad), the broken tusk, and the modaka (sweet dumpling). Each attribute carries symbolic meaning."},
+        {"url": "https://www.exoticindiaart.com/article/ganesha/", "text": "The mouse as Ganesha's vehicle represents the mind that gnaws at obstacles and can penetrate anywhere. The broken tusk was used to write the Mahabharata."}
+      ]
+    },
+    "murugan": {
+      "candidate": "Murugan (Kartikeya / Skanda) — god of war and son of Shiva",
+      "observations": "Youthful figure with two or six arms. Holds a vel (spear or lance) in the right hand, the primary attribute. May hold a flag or a cock (rooster, his emblem). Wears a peacock feather crown; peacock (mayura) is the vahana. Two figures sometimes accompany: Valli and Devasena (his consorts). The face is young, handsome, and radiant. Adorned with elaborate jewellery typical of Tamil Shaivite iconography.",
+      "iconography": "Murugan is the Tamil god of war, youth, and divine knowledge. The vel (spear) given by Parvati represents wisdom that destroys ignorance. The peacock represents the destruction of the ego (the peacock kills snakes, which represent desire). Murugan is the presiding deity of Tamil Nadu and is especially venerated in the six abodes (Arupadai Veedu).",
+      "sources": [
+        {"url": "https://en.wikipedia.org/wiki/Kartikeya", "text": "Kartikeya, also known as Murugan in Tamil, is the Hindu god of war and the commander of the gods. He is identified by his vel (spear) and his vahana the peacock."},
+        {"url": "https://www.tamilnadu.gov.in/murugan", "text": "Lord Murugan is the most popular deity in Tamil Nadu. The vel, or divine lance, is his chief attribute, symbolising divine knowledge piercing through ignorance."},
+        {"url": "https://www.templesofindia.co.in/murugan-iconography", "text": "Murugan's six faces (Shanmukha form) represent his presence in the six Arupadai Veedu shrines. His peacock vahana symbolises beauty and the destruction of ego."}
+      ]
+    },
+    "dakshinamurthy": {
+      "candidate": "Dakshinamurthy — Shiva as the silent teacher facing south",
+      "observations": "Seated figure facing south (dakshinam) under a banyan tree (vata vriksha). Four arms, with the right hands in Chin mudra (forefinger touching thumb, representing Brahman) and holding a book (scripture). Left hands hold a flame and a serpent or a noose. The figure is accompanied by four rishis (sages) seated at the feet. A small deer is sometimes present. The posture is meditative, with one leg pendant and one folded. Expression is serene and inward-looking.",
+      "iconography": "Dakshinamurthy represents Shiva as the supreme guru who teaches through silence. The Chin mudra signifies the union of the individual soul (jiva) with universal consciousness (Brahman). Facing south is auspicious in the context of teaching (south is the direction of Yama and of ancestors, but also of liberation). The banyan tree represents the indestructible nature of knowledge.",
+      "sources": [
+        {"url": "https://en.wikipedia.org/wiki/Dakshinamurthy", "text": "Dakshinamurthy is an aspect of the Hindu god Shiva as a guru (teacher) of all types of knowledge. This form represents Shiva in his aspect as the supreme or the ultimate awareness, understanding and knowledge."},
+        {"url": "https://www.adishankara.org/dakshinamurthy-stotram", "text": "The Dakshinamurthy Stotra by Adi Shankaracharya praises Shiva as the silent teacher whose gesture of Chin mudra communicates the highest Vedantic teaching without words."},
+        {"url": "https://www.ciis.edu/dakshinamurthy", "text": "Typically carved on the south face of Shiva temple vimanas, Dakshinamurthy holds a book (scripture), a flame (light of knowledge), and forms the Cin mudra indicating oneness of self and Brahman."}
+      ]
+    },
+    "ambiguous_figure": {
+      "candidate": "Unknown — possibly Vishnu or Murugan (attribute unclear)",
+      "observations": "Standing figure with four arms. The figure is tall and slender with an elaborate crown. Two upper arms are raised but the objects held are worn or damaged. The lower right hand may hold a discus (chakra) suggesting Vishnu, or a spear (vel) suggesting Murugan. The lower left hand appears to hold a conch or a flower. No vahana is clearly visible at the base. Elaborate earrings and necklaces. The posture is samabhanga (balanced stance).",
+      "iconography": "Without a clearly identifiable primary attribute (chakra vs vel) or vahana (Garuda eagle vs peacock), distinguishing Vishnu from Murugan is difficult. The conch is specific to Vishnu but may be confused with a flower. A close-up of the upper hands would resolve the identification.",
+      "sources": [
+        {"url": "https://en.wikipedia.org/wiki/Vishnu", "text": "Vishnu is typically depicted with four arms holding the Panchajanya conch, the Sudarshana Chakra disc, the Kaumodaki mace, and a lotus flower. The presence of the chakra is the most reliable identifier."},
+        {"url": "https://en.wikipedia.org/wiki/Kartikeya", "text": "Murugan's primary attribute is the vel (spear), not the chakra. The peacock vahana, when present, is definitive."}
+      ]
+    }
+  }
+}

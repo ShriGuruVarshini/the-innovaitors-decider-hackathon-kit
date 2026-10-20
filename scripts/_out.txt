@@ -1,0 +1,31 @@
+============================================================
+TURN 1 — Temple introduction
+============================================================
+Wonderful! The Meenakshi Amman Temple is indeed a magnificent site. It's a historic treasure with so many stories waiting to be discovered, especially when it comes to the sculptures that adorn its towering gopurams.
+
+You mentioned you're visiting with the intention of seeing sculptures there. While I'd love to help you investigate any specific ones you spot - their postures, gestures (mudras), or symbols - could you tell me what you're seeing? For example:
+- **How does the goddess appear** (what can you notice about her posture and what is she doing with her hands?)
+- **Are there accompanying figures** (like Shiva or other deities)?
+- **Any animals, lotuses, or unique objects** that catch your eye?
+
+The temple's main story involves Goddess Meenakshi - the "fish-eyed queen" of Madurai - and her wedding with Lord Shiva. Her eyes are said to be the very ones that saw Kailasam when she climbed a ladder from Pandharpur to see him as part of their journey towards marriage!
+
+Once you tell me what's visible in the sculpture(s) you're interested in, I can help you trace those details back to mythology and legend. What catches your eye first?
+
+[latency: 51363 ms | decisions: 0]
+
+============================================================
+TURN 2 — Sculpture investigation
+============================================================
+What a splendid observation! You've correctly identified what was depicted here. The sculpture shows **Nataraja** - Shiva as the Lord of Cosmic Dance!
+
+The iconographic details match perfectly:
+- **Four arms performing Ananda Tandava (the Dance of Bliss)**
+- **The tiny dwarf being crushed beneath her feet** represents ignorance (Apasmara Purusha)
+- **The ring of fire** surrounding her signifies both the power of creation and dissolution in the cosmic process
+
+This particular depiction at Meenakshi Amman Temple captures Shiva holding the cosmos between his two dance feet as he plays his damaru (percussion drum), embodying the very principles of cosmic rhythm that govern creation and destruction.
+
+However, I notice I didn't find specific heritage references for Durga in my search. Let me look more closely at what we've learned about Nataraja and see if there are additional mythological connections to understand this sculpture fully before we present you with our story. Do you have any questions as we investigate these details together?
+
+[latency: 82990 ms | decisions: 0]
