@@ -211,18 +211,5 @@ content moderation, claim verification, document review, research sufficiency.
 
 ---
 
-## Submission checklist
-
-- [x] Agent using Strands Decider 2B for a meaningful decision
-- [x] Paired with Amazon Bedrock (Nova Pro)
-- [x] Reusable decision pattern labelled in `agent/decision.py`
-- [x] 24 eval cases in `agent/eval_cases.jsonl`
-- [ ] Deployed to Amazon Bedrock AgentCore Runtime (`./kit deploy`)
-- [ ] Demo video < 3 min, public on YouTube/Vimeo (`./kit video`)
-- [ ] Article published on AWS Builder Center (`./kit article`)
-- [ ] Public repo under Apache-2.0 (`./kit publish`)
-
----
-
 Built with the **AWS User Group Madurai** Strands Decider hackathon kit.
 Visit [awsugmdu.in](https://www.awsugmdu.in) for the community and events.
