@@ -35,8 +35,7 @@ StoryStone is a heritage detective. Given a temple name and a sculpture photo, i
 5. **Asks Strands Decider 2B** whether the evidence is sufficient — and what to do next
 6. **Presents the story** — sourced, structured, with confidence and limitations clearly stated
 
-The agent is built with the Strands Agents SDK and deployed on Amazon Bedrock AgentCore Runtime.
-The generative LLM is Amazon Nova Pro via Amazon Bedrock.
+The agent is built with the Strands Agents SDK and runs locally using the AWS User Group Madurai cloud (qwen3.5-4b) as the LLM. The Strands Decider 2B hosted API handles the policy decision. The agent has not yet been deployed to Amazon Bedrock AgentCore Runtime — that is the planned production path when AWS credentials are available. The architecture is designed for drop-in deployment: `.\kit.cmd deploy` switches the LLM to Amazon Nova Pro on Amazon Bedrock automatically.
 
 ---
 
@@ -206,6 +205,10 @@ reusable pattern requirement.
 
 ## Architecture summary
 
+![StoryStone Architecture](../../docs/images/architecture.svg)
+
+*Dark boxes = components. Gold border = the agent. Green glow = Strands Decider 2B. Dashed arrows = data flow.*
+
 ```
 Tourist → Demo UI (FastAPI + HTML)
                │
@@ -217,11 +220,13 @@ Tourist → Demo UI (FastAPI + HTML)
                ├─ Strands Decider 2B ──────── #policy verdict (3 questions, 1 pass)
                │    (AWS User Group Madurai hosted API)
                │
-               └─ Amazon Bedrock Nova Pro ──── Story narration
-                    (Amazon Bedrock AgentCore Runtime)
+               └─ LLM narration ──────────── AWS User Group Madurai cloud (local demo)
+                                              Amazon Bedrock Nova Pro (when deployed)
 ```
 
 **LLM calls per investigation: 2.** Strands Decider 2B calls: 1.
+
+> **Deployment note:** This submission runs locally using the AWS User Group Madurai cloud LLM and hosted decider. The agent has not yet been deployed to Amazon Bedrock AgentCore Runtime — that is the planned production path when AWS credentials are configured. The architecture is designed for drop-in deployment: `.\kit.cmd deploy` switches the LLM to Amazon Bedrock automatically.
 
 ---
 

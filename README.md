@@ -77,6 +77,10 @@ acknowledge_uncertainty → present observations honestly, no fabricated identif
 
 ## Architecture
 
+![StoryStone Architecture](docs/images/architecture.svg)
+
+> *Dark boxes = components. Gold border = the agent. Green glow = Strands Decider 2B (the decision point). Dashed arrows = data flow.*
+
 ```
 Tourist
   │
@@ -92,8 +96,8 @@ Tourist
         ├─> Strands Decider 2B ────────── verdict + evidence_quality + needs_visual_detail
         │         (1 forward pass, ~1–2 s, hosted API)
         │
-        └─> LLM (1 call): final story narration  ← Amazon Bedrock Nova Pro (deployed)
-                                                   AWS User Group Madurai cloud (local dev)
+        └─> LLM (1 call): final story narration  ← AWS User Group Madurai cloud (local dev)
+                                                   Amazon Bedrock Nova Pro (when deployed)
 ```
 
 **LLM calls per investigation: 2** (temple intro + story narration)
@@ -195,12 +199,18 @@ content moderation, claim verification, document review, research sufficiency.
 
 ## Deployment
 
+> **Current status: running locally.** The agent has not yet been deployed to AWS. The submission demonstrates the full pipeline locally using the AWS User Group Madurai cloud LLM (qwen3.5-4b) and the hosted Strands Decider 2B API. Deployment to Amazon Bedrock AgentCore Runtime is the intended production path.
+
+**When AWS credentials are available**, deploy with:
+
 ```bash
 # Install Node + AgentCore CLI
 .\kit.cmd tools install deploy --yes
 
 # Add AWS credentials
 .\kit.cmd aws-login
+
+# Enable Amazon Nova Pro in Bedrock Model Access (AWS Console)
 
 # Deploy to Amazon Bedrock AgentCore Runtime (~3 min)
 .\kit.cmd deploy

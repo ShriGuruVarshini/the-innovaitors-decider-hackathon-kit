@@ -14,6 +14,7 @@ turns:
 
   - say: "I found a figure with four arms dancing inside a ring of fire, standing on a small dwarf. Who is this?"
     image: "agent/data/images/nataraja_demo.png"
+    caption: "Tourist uploads a sculpture photo — StoryStone analyses it, searches heritage references, assembles evidence, then asks Strands Decider whether there is enough to tell the story."
     narrate: "The tourist uploads a sculpture photo and describes what they see. StoryStone analyses the iconographic details, searches heritage references, assembles the evidence, and the decider classifies the verdict."
 
   - say: "What does the drum in the upper right hand represent? And why is there a dwarf under the feet?"
