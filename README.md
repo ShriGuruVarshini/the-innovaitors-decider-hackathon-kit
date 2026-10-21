@@ -103,13 +103,19 @@ Strands Decider calls: 1 (verdict classification, 3 questions)
 
 ## Benchmark
 
-| Metric | Strands Decider 2B | LLM baseline |
+| Metric | Strands Decider 2B | LLM baseline (qwen3.5-4b) |
 |---|---|---|
-| Accuracy (tune split, 12 cases) | *run `./kit bench`* | *run `./kit bench`* |
-| Latency per decision | ~1–2 s (hosted API) | ~3–5 s |
-| Cost per decision | ~$0.000 (free tier) | ~$0.002–0.005 |
+| Accuracy (tune split, 11 cases) | **57.6%** overall / **81.2%** when confident (≥0.7) | 81.8% |
+| Latency p50 per decision | **5,639 ms** (hosted API) | 23,355 ms |
+| Latency p95 | 8,188 ms | 31,207 ms |
+| Cost per 1,000 decisions | $0.035 | $0.000 (free tier) |
+| Decisions answered at ≥0.7 confidence | 48% | 100% |
 
-*Real numbers from `submission/bench/results.json` after running `./kit bench --split test`.*
+**Key insight:** When the decider is confident (p ≥ 0.7), accuracy matches the LLM (81%).
+The 48% that fall below 0.7 confidence trigger the low-confidence note in the story — an honest
+signal that the tourist should verify with a guide. The decider is **4.1× faster** than the LLM baseline.
+
+*Run `.\kit.cmd bench --split test` to reproduce on the held-out test split.*
 
 ---
 

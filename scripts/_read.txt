@@ -1,0 +1,1 @@
+[video] demo_script.yaml 'intro' contains a number: say it without figures; the video adds the measured numbers itself (decisions per turn and the benchmark slide)

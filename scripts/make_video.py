@@ -61,7 +61,8 @@ def duration(path: Path) -> float:
 
 
 def tts(text: str, out: Path) -> Path:
-    """Speech for `text` as an mp3: Amazon Polly (neural) if AWS works, else macOS `say`."""
+    """Speech for `text` as an mp3: Amazon Polly (neural) → Windows SAPI → macOS `say`."""
+    # 1. Amazon Polly (needs AWS credentials)
     try:
         import boto3
 
@@ -72,13 +73,42 @@ def tts(text: str, out: Path) -> Path:
                                     Engine="neural")
         out.write_bytes(r["AudioStream"].read())
         return out
-    except Exception as e:  # noqa: BLE001
-        if shutil.which("say"):
-            aiff = out.with_suffix(".aiff")
-            subprocess.run(["say", "-r", "185", "-o", str(aiff), text], check=True)
-            run([ffmpeg(), "-y", "-i", str(aiff), str(out)])
+    except Exception:  # noqa: BLE001
+        pass
+
+    # 2. Windows SAPI via PowerShell (works without AWS credentials)
+    if sys.platform == "win32":
+        try:
+            wav = out.with_suffix(".wav")
+            txt_file = out.with_suffix(".txt")
+            txt_file.write_text(text, encoding="utf-8")
+            voice = os.environ.get("SAPI_VOICE", "Microsoft Zira Desktop")
+            txt_path = str(txt_file).replace("\\", "\\\\")
+            wav_path = str(wav).replace("\\", "\\\\")
+            ps_cmd = (
+                "Add-Type -AssemblyName System.Speech; "
+                f"$s = New-Object System.Speech.Synthesis.SpeechSynthesizer; "
+                f"$s.SelectVoice('{voice}'); "
+                "$s.Rate = 1; "
+                f"$s.SetOutputToWaveFile('{wav_path}'); "
+                f"$s.Speak([System.IO.File]::ReadAllText('{txt_path}')); "
+                "$s.Dispose()"
+            )
+            subprocess.run(["powershell", "-Command", ps_cmd], check=True,
+                           stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            run([ffmpeg(), "-y", "-i", str(wav), str(out)])
             return out
-        raise RuntimeError(f"no text-to-speech available (Polly failed: {e}; no `say`)") from e
+        except Exception:  # noqa: BLE001
+            pass
+
+    # 3. macOS `say`
+    if shutil.which("say"):
+        aiff = out.with_suffix(".aiff")
+        subprocess.run(["say", "-r", "185", "-o", str(aiff), text], check=True)
+        run([ffmpeg(), "-y", "-i", str(aiff), str(out)])
+        return out
+
+    raise RuntimeError("no text-to-speech available (Polly failed; no Windows SAPI or macOS `say`)")
 
 
 def facts_for(turn_out: dict) -> str:
@@ -185,7 +215,7 @@ def record(script: dict, port: int, workdir: Path) -> tuple[Path, list[dict]]:
                 pg.type("#m", turn["say"], delay=28)
                 pg.press("#m", "Enter")
             out = resp.value.json()
-            pg.wait_for_function(f"document.body.dataset.turns >= {i + 1}", timeout=30_000)
+            pg.wait_for_function(f"document.body.dataset.turns >= {i + 1}", timeout=180_000)
             pg.wait_for_timeout(1800)
             marks.append({"start": start, "end": time.time() - t0, "out": out, **turn})
         pg.wait_for_timeout(800)

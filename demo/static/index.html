@@ -325,6 +325,7 @@ async function sendMsg() {
   const n = out.decisions?.length || 0;
   wait.innerHTML = esc(out.reply) +
     `<div class="t">${out.latency_ms} ms · ${n} decision${n===1?"":"s"}${out.served_by ? " · " + esc(out.served_by) : ""}</div>`;
+  document.body.dataset.turns = (+(document.body.dataset.turns || 0) + 1);
 }
 
 // Enter key sends

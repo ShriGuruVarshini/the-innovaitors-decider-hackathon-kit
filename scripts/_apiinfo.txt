@@ -1,0 +1,1 @@
+{"agent":"StoryStone ƒ?? The Curious Heritage Detective","llm":"AWS User Group Madurai cloud (qwen3.5-4b)","bedrock_model":"us.amazon.nova-pro-v1:0","decider":"ugmdu","target":"local"}

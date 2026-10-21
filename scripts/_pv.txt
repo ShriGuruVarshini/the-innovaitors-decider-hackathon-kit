@@ -1,0 +1,7 @@
+ffmpeg: C:\Users\HP\Downloads\the-innovaitors-decider-hackathon-kit\the-innovaitors-decider-hackathon-kit\.venv\Lib\site-packages\imageio_ffmpeg\binaries\ffmpeg-win-x86_64-v7.1.exe
+playwright/chromium: OK
+Windows TTS voices: ['Microsoft Hazel Desktop', 'Microsoft Zira Desktop']
+AWS Polly: unavailable (ClientError)
+bench results: present
+demo server: not running (will be started by kit video)
+sculpture images: NONE in agent/data/images/ (will download one)

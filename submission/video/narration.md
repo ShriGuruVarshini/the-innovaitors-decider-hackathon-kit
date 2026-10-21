@@ -1,15 +1,15 @@
-0. This store support agent talks through Amazon Bedrock. For this demo it is told to act without asking, and Strands Decider 2B checks every refund or cancellation before it runs.
+0. StoryStone is a heritage detective for tourists. It researches the temple, analyses the sculpture, assembles the evidence, and only then asks Strands Decider whether there is enough to tell the story — or whether to dig deeper, ask for a closer photo, or admit uncertainty.
 
-1. A store support agent that can refund and cancel orders, and cannot do it to the wrong order. It can look up, refund and cancel orders in chat; check every irreversible action with Strands Decider 2B before it runs; send unsure cases to a human instead of guessing; run on Amazon Bedrock AgentCore Runtime.
+1. Every sculpture has a story. StoryStone investigates the clues and discovers it. What it does: Dynamic temple introduction with sourced history and legends. Iconographic analysis — posture, mudras, attributes, companions. Strands Decider classifies the investigation verdict before any story is told. Evidence-backed story with sources, confidence and explore-further prompts.
 
-2. The agent you are about to see is running on Amazon Bedrock AgentCore Runtime.
+2. The tourist enters the temple name and city. StoryStone researches it and presents a sourced introduction. No decision was needed on this turn.
 
-3. The customer wants a refund but never says which order. The decider scored args grounded 0.44, explicit request 0.79, premature 0.23, so the verdict was guide, in 3.1 seconds.
+3. The tourist uploads a sculpture photo and describes what they see. StoryStone analyses the iconographic details, searches heritage references, assembles the evidence, and the decider classifies the verdict. The decider scored verdict confidence 0.56, p evidence quality 0.78, p needs visual 0.71, so the verdict was answer, in 12.9 seconds.
 
-4. Now the customer gives the order id and asks for the refund explicitly. The decider scored args grounded 0.61, explicit request 0.89, premature 0.13, so the verdict was proceed, in 3.9 seconds.
+4. A follow-up question about the same sculpture. StoryStone answers from the assembled context without re-running the full investigation. No decision was needed on this turn.
 
-5. This one is a question, not a request to act. No decision was needed on this turn.
+5. The tourist asks for recommendations. StoryStone draws on the temple context already assembled in the session. The decider scored verdict confidence 0.45, p evidence quality 0.19, p needs visual 0.71, so the verdict was answer, in 6.4 seconds.
 
-6. On 24 labelled decisions, with the decider running locally on this machine, Strands Decider was 79% accurate at a median of 295 milliseconds, against 96% and 1276 milliseconds for the Bedrock LLM asked the same questions.
+6. On 33 labelled decisions, with the decider on the AWS User Group Madurai hosted API, Strands Decider was 58% accurate at a median of 5639 milliseconds, against 82% and 23355 milliseconds for a hosted open LLM asked the same questions.
 
-7. One forward pass per decision, typed answers with a confidence the code can branch on, and Amazon Bedrock for the conversation.
+7. One decider call per investigation. Calibrated probabilities let the code branch on whether the evidence is strong enough — faster and more honest than asking the model to judge its own confidence.

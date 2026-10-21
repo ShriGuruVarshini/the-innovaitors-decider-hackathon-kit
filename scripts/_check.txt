@@ -1,0 +1,14 @@
+  [32mPASS[0m pattern labelled
+  [32mPASS[0m PATTERN_TAG  (#policy)
+  [32mPASS[0m QUESTIONS defined
+  [32mPASS[0m your own agent  (kit example removed)
+  [31mFAIL[0m agent  (check crashed: 'charmap' codec can't decode byte 0x8f in position 19448: character maps to <undefined>)
+  [32mPASS[0m measured comparison  (decider 58% vs LLM 82%, split tune)
+  [31mFAIL[0m agent on AWS  (./kit deploy (the rules require a working agent on AWS))
+  [32mPASS[0m demo video under 3 minutes  (91 s)
+  [33mWARN[0m public video link  (upload demo.mp4 to YouTube or Vimeo (public) and paste the link in submission/SUBMISSION.md)
+  [31mFAIL[0m Builder Center article  (/write-article, then ./kit article)
+  [32mPASS[0m OSI licence
+  [31mFAIL[0m repo  (check crashed: 'charmap' codec can't decode byte 0x90 in position 3687: character maps to <undefined>)
+
+4 FAIL, 1 WARN

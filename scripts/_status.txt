@@ -1,0 +1,9 @@
+Strands Decider hackathon progress (AWS User Group Madurai kit)
+  [x] Setup (./kit setup)
+  [x] Your own agent replaces the kit example (/new-agent)
+  [x] Benchmark of your decision (./kit bench)
+  [ ] Deployed to AWS (./kit deploy)
+  [ ] Builder Center article (/write-article)
+  [x] Demo video (./kit video)
+  [ ] Public repo (./kit publish)
+Next: ./kit deploy
